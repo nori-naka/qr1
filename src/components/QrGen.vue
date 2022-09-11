@@ -13,6 +13,7 @@ const keyEvent = (ev) => {
   if (ev.keyCode === 13) qr_gen();
 }
 const qr_gen = async () => {
+  if (inputRef.value.value === "") return;
   try {
     const qrUrl = await QRCode.toDataURL(inputRef.value.value);
     qrImag.value.src = qrUrl;
