@@ -46,6 +46,7 @@ const draw = () => {
       if (code) {
         console.log(code);
         resultRef.value = code.data;
+        navigator.vibrate(200);
         emit("qr_text", code.data);
       }
     }
