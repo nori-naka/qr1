@@ -6,7 +6,7 @@ const camRef = ref(null);
 const cbsRef = ref(null);
 const wRef = ref(null);
 const hRef = ref(null);
-const resultRef = ref("HELLO");
+const resultRef = ref("検出結果");
 
 const emit = defineEmits(
   ["qr_text"]
@@ -63,14 +63,22 @@ onMounted(() => draw());
 </script>
 
 <template>
-  <video ref="camRef" muted autoplay></video>
-  <a :href="resultRef" v-if="isUrl(resultRef)">{{ resultRef }}</a>
-  <div v-else>{{ resultRef }}</div>
+  <video ref="camRef" muted autoplay playsinline></video>
+  <div class="fontClass">
+    <a :href="resultRef" v-if="isUrl(resultRef)">{{ resultRef }}</a>
+    <div v-else>{{ resultRef }}</div>
+  </div>
   <canvas v-show="false" ref="cbsRef" class="cbs" :width="wRef" :height="hRef"></canvas>
 </template>
 
 <style>
 video, canvas {
   width: 70vw;
+}
+.fontClass {
+  font-family: 'text-regular','Yu Gothic UI','Meiryo UI',sans-serif;
+  overflow-wrap: break-word;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
 }
 </style>
